@@ -1,0 +1,18 @@
+{
+  "name": "niyabh-labs-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Niyabh Labs — AI & IT services landing page built with Nuxt 3 + Tailwind CSS",
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "nuxt": "^3.14.1592"
+  }
+}
