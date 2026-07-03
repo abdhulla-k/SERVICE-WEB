@@ -35,12 +35,8 @@ jobs:
 
       - name: Generate static site
         run: npm run generate
-        # Deploying to the project page https://<user>.github.io/SERVICE-WEB/,
-        # so the base URL must be the repo subpath.
-        # To move to a custom domain / user page: set this to '/', re-add
-        # public/CNAME, and configure DNS.
-        env:
-          NUXT_APP_BASE_URL: /SERVICE-WEB/
+        # Deploying to the custom domain niyabhlabs.com (served at the root),
+        # so the base URL is '/'. public/CNAME sets the Pages custom domain.
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
