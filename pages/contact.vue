@@ -125,6 +125,7 @@ const faqs = [
             </a>
           </div>
 
+          <!--
           <div class="reveal mt-8" style="transition-delay: 240ms">
             <p class="text-sm font-600 text-slate-900">Follow along</p>
             <div class="mt-3 flex gap-2">
@@ -141,6 +142,7 @@ const faqs = [
               </a>
             </div>
           </div>
+          -->
         </div>
 
         <!-- Form column -->
