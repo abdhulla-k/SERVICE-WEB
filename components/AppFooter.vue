@@ -46,6 +46,7 @@ const year = 2026
             {{ company.tagline }}. We help teams design, build, and ship
             production-grade AI systems.
           </p>
+          <!--
           <div class="mt-5 flex gap-2">
             <a
               v-for="s in social"
@@ -59,6 +60,7 @@ const year = 2026
               <AppIcon :name="s.icon" class="h-5 w-5" />
             </a>
           </div>
+          -->
         </div>
 
         <div>
@@ -104,7 +106,7 @@ const year = 2026
         class="flex flex-col items-center justify-between gap-3 border-t border-white/10 py-6 text-sm text-slate-500 sm:flex-row"
       >
         <p>© {{ year }} {{ company.legalName }}. All rights reserved.</p>
-        <p>Built with Nuxt &amp; Tailwind CSS.</p>
+        <p>AI-first engineering for ambitious teams.</p>
       </div>
     </div>
   </footer>

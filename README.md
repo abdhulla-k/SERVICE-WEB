@@ -76,7 +76,7 @@ If you drop the custom domain and serve from a repo subpath:
 ## Contact form
 
 The site is fully static (no backend), so the contact form opens the visitor's
-email client pre-filled to `info@niyabhlabs.com`. To collect submissions
+email client pre-filled to `info.niyabhlabs@gmail.com`. To collect submissions
 automatically instead, sign up for [Formspree](https://formspree.io) or
 [Getform](https://getform.io) and, in `pages/contact.vue`, replace the
 `handleSubmit()` body with a `fetch()` POST to your form endpoint.

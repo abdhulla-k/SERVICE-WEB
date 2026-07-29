@@ -29,7 +29,7 @@ export const useSiteData = () => {
     name: 'Niyabh Labs',
     legalName: 'Niyabh Labs',
     tagline: 'AI-first engineering for ambitious teams',
-    email: 'info@niyabhlabs.com',
+    email: 'info.niyabhlabs@gmail.com',
     phone: '+91 00000 00000',
     location: 'Kerala, India · Remote-first',
     domain: 'niyabhlabs.com',
