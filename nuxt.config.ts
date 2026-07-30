@@ -73,7 +73,11 @@ export default defineNuxtConfig({
         '/services/ai-first-development',
         '/services/mlops-cloud',
         '/services/automation',
-        '/services/consulting'
+        '/services/consulting',
+        // Legal pages — intentionally not linked from the site UI,
+        // reachable only by direct URL (used for Google Play listings).
+        '/privacy',
+        '/terms'
       ]
     }
   },
