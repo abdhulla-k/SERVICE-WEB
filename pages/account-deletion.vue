@@ -9,6 +9,51 @@ useSeoMeta({
 })
 
 const lastUpdated = 'August 3, 2026'
+
+const apps = [
+  {
+    id: 'payper-trade',
+    name: 'Payper Trade',
+    pkg: 'dev.abdhu.payper_trade',
+    signIn: 'Google sign-in',
+    place: 'Account tab → Delete account',
+    data:
+      'your profile (name, email, profile picture reference) and all practice trading data — virtual funds, orders, positions, trade history, watchlist, and practice-streak days'
+  },
+  {
+    id: 'payper-crypto',
+    name: 'Payper Crypto',
+    pkg: 'dev.abdhu.paypercrypto',
+    signIn: 'Google sign-in',
+    place: 'Account tab → Delete account',
+    data:
+      'your profile (name, email, profile picture reference) and all practice trading data — virtual funds, orders, positions, trade history, and watchlist'
+  },
+  {
+    id: 'chitfund',
+    name: 'ChitFund',
+    pkg: 'com.abdhu.chitfund_app',
+    signIn: 'sign-in',
+    place: 'the account / settings screen → Delete account',
+    data: 'your profile and the chit fund records you created in the app'
+  },
+  {
+    id: 'life-planner',
+    name: 'Life Planner',
+    pkg: 'com.abdhulla.sprig',
+    signIn: 'Google sign-in',
+    place: 'the account / settings screen → Delete account',
+    data: 'your profile and the tasks, plans, and content you created in the app'
+  },
+  {
+    id: 'trade-book',
+    name: 'Trade Book',
+    pkg: 'com.tradebook.trade_book',
+    signIn: 'sign-in',
+    place: 'Profile → Delete account',
+    data: 'your profile and the trading journal entries you created in the app'
+  }
+]
 </script>
 
 <template>
@@ -29,47 +74,34 @@ const lastUpdated = 'August 3, 2026'
       <p>
         This page explains how to delete your account and the data associated
         with it in mobile applications published by Niyabh Labs on the Google
-        Play Store. Each app that supports sign-in is listed below with its
-        deletion steps. Deletion is permanent and cannot be undone.
+        Play Store. The apps that support sign-in are listed below. Deletion is
+        permanent and cannot be undone.
       </p>
 
-      <h2 id="payper-trade">Payper Trade</h2>
-      <p>
-        Payper Trade (package <code>dev.abdhu.payper_trade</code>) is a virtual
-        trading practice app that uses Google sign-in. Your account stores your
-        name, email address, profile picture reference, and your practice
-        trading data: virtual funds, orders, positions, trade history,
-        watchlist, and practice-streak days.
-      </p>
-
+      <h2>How deletion works (all apps)</h2>
       <h3>Delete from inside the app (instant)</h3>
-      <ul>
-        <li>Open Payper Trade and go to the <strong>Account</strong> tab.</li>
-        <li>Tap <strong>Delete account</strong>.</li>
-        <li>Confirm in the dialog. You may be asked to sign in with Google again to verify it's you.</li>
-      </ul>
       <p>
-        Your sign-in record and all practice data listed above are permanently
-        deleted immediately, and the app returns to the sign-in screen.
+        Every Niyabh Labs app with sign-in has a <strong>Delete account</strong>
+        option in its account or settings screen (exact location per app below).
+        Confirming it permanently deletes your sign-in record and all content
+        listed for that app, immediately. You may be asked to sign in again
+        first to verify it's you.
       </p>
-
       <h3>Delete without the app installed (email request)</h3>
       <p>
-        If you have uninstalled the app, email us at
-        <a :href="`mailto:${company.email}`">{{ company.email }}</a> with the
-        subject <em>"Delete my Payper Trade account"</em>. To verify your
+        If you have uninstalled an app, email us at
+        <a :href="`mailto:${company.email}`">{{ company.email }}</a> with a
+        subject like <em>"Delete my [app name] account"</em>. To verify your
         identity, send the request
-        <strong>from the same Google account email you used to sign in</strong>.
-        We will delete your account and all associated data within
-        <strong>7 days</strong> and reply to confirm once it is done.
+        <strong>from the same email address you used to sign in</strong> and
+        name the app. We will delete your account and all associated data
+        within <strong>7 days</strong> and reply to confirm once it is done.
       </p>
-
       <h3>What is deleted, and what is kept</h3>
       <ul>
         <li>
-          <strong>Deleted:</strong> your sign-in record (name, email, profile
-          picture reference) and all practice trading data — virtual funds,
-          orders, positions, trade history, watchlist, and streaks.
+          <strong>Deleted:</strong> your sign-in record and everything listed
+          under the app below — all data linked to your account.
         </li>
         <li>
           <strong>Kept:</strong> nothing linked to your account. Aggregate or
@@ -81,20 +113,31 @@ const lastUpdated = 'August 3, 2026'
             target="_blank"
             rel="noopener"
             >their own policies</a
-          >, are not associated with your Payper Trade account and are covered
-          by our <NuxtLink to="/privacy">Privacy Policy</NuxtLink>.
+          >, are not associated with your account and are covered by our
+          <NuxtLink to="/privacy">Privacy Policy</NuxtLink>.
         </li>
       </ul>
 
-      <h2>Other Niyabh Labs apps</h2>
+      <h2>Apps</h2>
+      <template v-for="app in apps" :key="app.id">
+        <h3 :id="app.id">{{ app.name }}</h3>
+        <p>
+          {{ app.name }} (package <code>{{ app.pkg }}</code
+          >) uses {{ app.signIn }}. Your account stores {{ app.data }}.
+          <br />
+          <strong>In-app:</strong> {{ app.place }}, then confirm.
+          <br />
+          <strong>By email:</strong> follow the email steps above, naming
+          "{{ app.name }}".
+        </p>
+      </template>
+
+      <h2>Other apps</h2>
       <p>
-        Our other apps currently do not require an account or sign-in; they
-        store content only on your device, and uninstalling the app removes it.
-        If a future app introduces accounts, its deletion steps will be added
-        to this page. For any deletion or privacy request about any of our
-        apps, email
-        <a :href="`mailto:${company.email}`">{{ company.email }}</a> and name
-        the app in your message.
+        Niyabh Labs apps not listed above do not require an account; they store
+        content only on your device, and uninstalling the app removes it. If a
+        future app introduces accounts, its deletion steps will be added to
+        this page.
       </p>
 
       <h2>Contact</h2>
