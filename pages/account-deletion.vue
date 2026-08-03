@@ -14,7 +14,7 @@ const apps = [
   {
     id: 'payper-trade',
     name: 'Payper Trade',
-    pkg: 'dev.abdhu.payper_trade',
+    pkg: 'com.niyabhlabs.payper_trade',
     signIn: 'Google sign-in',
     place: 'Account tab → Delete account',
     data:
@@ -23,7 +23,7 @@ const apps = [
   {
     id: 'payper-crypto',
     name: 'Payper Crypto',
-    pkg: 'dev.abdhu.paypercrypto',
+    pkg: 'com.niyabhlabs.payper_crypto',
     signIn: 'Google sign-in',
     place: 'Account tab → Delete account',
     data:
@@ -32,7 +32,7 @@ const apps = [
   {
     id: 'chitfund',
     name: 'ChitFund',
-    pkg: 'com.abdhu.chitfund_app',
+    pkg: '',
     signIn: 'sign-in',
     place: 'the account / settings screen → Delete account',
     data: 'your profile and the chit fund records you created in the app'
@@ -40,7 +40,7 @@ const apps = [
   {
     id: 'life-planner',
     name: 'Life Planner',
-    pkg: 'com.abdhulla.sprig',
+    pkg: '',
     signIn: 'Google sign-in',
     place: 'the account / settings screen → Delete account',
     data: 'your profile and the tasks, plans, and content you created in the app'
@@ -122,8 +122,11 @@ const apps = [
       <template v-for="app in apps" :key="app.id">
         <h3 :id="app.id">{{ app.name }}</h3>
         <p>
-          {{ app.name }} (package <code>{{ app.pkg }}</code
-          >) uses {{ app.signIn }}. Your account stores {{ app.data }}.
+          {{ app.name }}<template v-if="app.pkg">
+            (package <code>{{ app.pkg }}</code
+            >)</template
+          >
+          uses {{ app.signIn }}. Your account stores {{ app.data }}.
           <br />
           <strong>In-app:</strong> {{ app.place }}, then confirm.
           <br />
