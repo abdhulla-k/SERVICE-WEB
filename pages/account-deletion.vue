@@ -54,6 +54,47 @@ const apps = [
     data: 'your profile and the trading journal entries you created in the app'
   }
 ]
+
+// Deep link: /account-deletion#payper-trade shows only that app (this is the
+// URL each Play listing's Data Safety form points at).
+const selectedId = ref<string | null>(null)
+
+const syncHash = () => {
+  const h = window.location.hash.replace('#', '')
+  selectedId.value = apps.some((a) => a.id === h) ? h : null
+  if (selectedId.value) form.appId = selectedId.value
+}
+
+onMounted(() => {
+  syncHash()
+  window.addEventListener('hashchange', syncHash)
+})
+onBeforeUnmount(() => window.removeEventListener('hashchange', syncHash))
+
+const visibleApps = computed(() =>
+  selectedId.value ? apps.filter((a) => a.id === selectedId.value) : apps
+)
+
+const showAll = () => {
+  history.replaceState(null, '', window.location.pathname)
+  selectedId.value = null
+}
+
+// Email request form — opens the visitor's mail app (Gmail on most phones)
+// with everything pre-filled; they just press send.
+const form = reactive({ appId: apps[0].id, email: '' })
+
+const submit = () => {
+  const app = apps.find((a) => a.id === form.appId) ?? apps[0]
+  const subject = `Delete my ${app.name} account`
+  const body =
+    `Please delete my ${app.name} account and all associated data.\n\n` +
+    `My sign-in email: ${form.email}\n\n` +
+    `(I am sending this from the same email address I used to sign in.)`
+  window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`
+}
 </script>
 
 <template>
@@ -74,34 +115,81 @@ const apps = [
       <p>
         This page explains how to delete your account and the data associated
         with it in mobile applications published by Niyabh Labs on the Google
-        Play Store. The apps that support sign-in are listed below. Deletion is
-        permanent and cannot be undone.
+        Play Store. Deletion is permanent and cannot be undone.
       </p>
 
-      <h2>How deletion works (all apps)</h2>
-      <h3>Delete from inside the app (instant)</h3>
-      <p>
-        Every Niyabh Labs app with sign-in has a <strong>Delete account</strong>
-        option in its account or settings screen (exact location per app below).
-        Confirming it permanently deletes your sign-in record and all content
-        listed for that app, immediately. You may be asked to sign in again
-        first to verify it's you.
+      <h2>{{ selectedId ? visibleApps[0].name : 'Apps' }}</h2>
+      <p v-if="selectedId">
+        <a href="#" @click.prevent="showAll">← See all Niyabh Labs apps</a>
       </p>
-      <h3>Delete without the app installed (email request)</h3>
+      <template v-for="app in visibleApps" :key="app.id">
+        <h3 v-if="!selectedId" :id="app.id">{{ app.name }}</h3>
+        <p>
+          {{ app.name }}<template v-if="app.pkg">
+            (package <code>{{ app.pkg }}</code
+            >)</template
+          >
+          uses {{ app.signIn }}. Your account stores {{ app.data }}.
+        </p>
+        <p>
+          <strong>Fastest way — delete inside the app (instant):</strong>
+          open {{ app.place }}, then confirm. Your sign-in record and all the
+          data above are permanently deleted immediately. You may be asked to
+          sign in again first to verify it's you.
+        </p>
+      </template>
+
+      <h2>Request deletion by email</h2>
       <p>
-        If you have uninstalled an app, email us at
-        <a :href="`mailto:${company.email}`">{{ company.email }}</a> with a
-        subject like <em>"Delete my [app name] account"</em>. To verify your
-        identity, send the request
-        <strong>from the same email address you used to sign in</strong> and
-        name the app. We will delete your account and all associated data
-        within <strong>7 days</strong> and reply to confirm once it is done.
+        If you have uninstalled the app, use this form. It opens your email app
+        with the request pre-filled — just press send.
+        <strong>Send it from the same email address you used to sign in</strong>
+        (that is how we verify it's you). We will delete your account and all
+        associated data within <strong>7 days</strong> and reply to confirm.
       </p>
-      <h3>What is deleted, and what is kept</h3>
+
+      <form
+        class="mt-6 rounded-3xl border border-slate-100 bg-white p-6 shadow-card sm:p-8"
+        @submit.prevent="submit"
+      >
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div v-if="!selectedId">
+            <label for="del-app" class="mb-1.5 block text-sm font-600 text-slate-700">App *</label>
+            <select
+              id="del-app"
+              v-model="form.appId"
+              required
+              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+            >
+              <option v-for="app in apps" :key="app.id" :value="app.id">
+                {{ app.name }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <label for="del-email" class="mb-1.5 block text-sm font-600 text-slate-700"
+              >Your sign-in email *</label
+            >
+            <input
+              id="del-email"
+              v-model="form.email"
+              type="email"
+              required
+              placeholder="you@gmail.com"
+              class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+            />
+          </div>
+        </div>
+        <button type="submit" class="btn-primary mt-6 w-full sm:w-auto">
+          Open email &amp; request deletion
+        </button>
+      </form>
+
+      <h2>What is deleted, and what is kept</h2>
       <ul>
         <li>
           <strong>Deleted:</strong> your sign-in record and everything listed
-          under the app below — all data linked to your account.
+          for the app above — all data linked to your account.
         </li>
         <li>
           <strong>Kept:</strong> nothing linked to your account. Aggregate or
@@ -118,26 +206,9 @@ const apps = [
         </li>
       </ul>
 
-      <h2>Apps</h2>
-      <template v-for="app in apps" :key="app.id">
-        <h3 :id="app.id">{{ app.name }}</h3>
-        <p>
-          {{ app.name }}<template v-if="app.pkg">
-            (package <code>{{ app.pkg }}</code
-            >)</template
-          >
-          uses {{ app.signIn }}. Your account stores {{ app.data }}.
-          <br />
-          <strong>In-app:</strong> {{ app.place }}, then confirm.
-          <br />
-          <strong>By email:</strong> follow the email steps above, naming
-          "{{ app.name }}".
-        </p>
-      </template>
-
       <h2>Other apps</h2>
       <p>
-        Niyabh Labs apps not listed above do not require an account; they store
+        Niyabh Labs apps not listed here do not require an account; they store
         content only on your device, and uninstalling the app removes it. If a
         future app introduces accounts, its deletion steps will be added to
         this page.
