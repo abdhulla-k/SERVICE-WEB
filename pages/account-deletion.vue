@@ -8,7 +8,7 @@ useSeoMeta({
   robots: 'noindex, follow'
 })
 
-const lastUpdated = 'August 3, 2026'
+const lastUpdated = 'September 5, 2026'
 
 const apps = [
   {
@@ -22,12 +22,12 @@ const apps = [
   },
   {
     id: 'payper-crypto',
-    name: 'Payper Crypto',
-    pkg: 'com.niyabhlabs.payper_crypto',
+    name: 'Crypto Practice',
+    pkg: 'com.niyabhlabs.paypercrypto',
     signIn: 'Google sign-in',
     place: 'Account tab → Delete account',
     data:
-      'your profile (name, email, profile picture reference) and all practice trading data — virtual funds, orders, positions, trade history, and watchlist'
+      'your profile (name, email, profile picture reference) and all practice trading data — virtual funds, orders, holdings, trade history, watchlist, and practice-streak days'
   },
   {
     id: 'chitfund',
