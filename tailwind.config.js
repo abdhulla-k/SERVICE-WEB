@@ -10,6 +10,26 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Learning-platform palette. Warm paper + ink, amber for the lesson,
+        // blue for the learner's question and its generated answer.
+        nl: {
+          paper: '#f6f4ef',
+          surface: '#fdfcf9',
+          ink: '#1b1a17',
+          muted: '#6b685f',
+          faint: '#8a867c',
+          line: '#e6e2d8',
+          stage: '#151513',
+          stage2: '#232320',
+          amber: '#e98b3a',
+          'amber-dark': '#9a5114',
+          'amber-soft': '#fbebdc',
+          blue: '#5b9fef',
+          'blue-ink': '#10233a',
+          'blue-soft': '#8fbdf3',
+          'blue-deep': '#1f4f86',
+          'blue-tint': '#dce8f7'
+        },
         // Green brand palette (emerald-forward)
         brand: {
           50: '#ecfdf5',
@@ -27,7 +47,11 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"Space Grotesk"', 'Inter', 'ui-sans-serif', 'sans-serif']
+        display: ['"Space Grotesk"', 'Inter', 'ui-sans-serif', 'sans-serif'],
+        // Learning-platform type stack
+        nl: ['"Instrument Sans"', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+        'nl-display': ['"Bricolage Grotesque"', '"Arial Narrow"', 'Arial', 'sans-serif'],
+        'nl-mono': ['"JetBrains Mono"', 'Menlo', 'Consolas', 'monospace']
       },
       // Numeric weight utilities (font-500 / font-600 / font-700) used across the site.
       fontWeight: {

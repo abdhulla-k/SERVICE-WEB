@@ -1,0 +1,489 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Learning-platform theme (`nl-` prefix)
+   Self-contained, plain CSS (no @apply / @layer) so it can be dropped in or
+   pulled out without touching the rest of the site. Warm paper and ink, amber
+   for the lesson, blue for the learner's question and its generated answer —
+   the same tokens the player itself uses.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.nl {
+  --paper: #f6f4ef;
+  --surface: #fdfcf9;
+  --ink: #1b1a17;
+  --muted: #6b685f;
+  --faint: #8a867c;
+  --line: #e6e2d8;
+  --stage: #151513;
+  --stage-2: #232320;
+  --amber: #e98b3a;
+  --amber-dark: #9a5114;
+  --blue: #5b9fef;
+  --blue-ink: #10233a;
+  --blue-soft: #8fbdf3;
+
+  --display: 'Bricolage Grotesque', 'Arial Narrow', Arial, sans-serif;
+  --body: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'JetBrains Mono', Menlo, Consolas, monospace;
+
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The site-wide base layer paints every h1–h4 dark. Inside this theme headings
+   take their colour from their section instead, so a heading on a dark panel is
+   legible without spelling out a colour on every one. */
+.nl h1,
+.nl h2,
+.nl h3,
+.nl h4 {
+  color: inherit;
+}
+
+.nl ::selection {
+  background: var(--amber);
+  color: var(--ink);
+}
+
+/* ── Layout ──────────────────────────────────────────────────────────── */
+/* Horizontal padding only — this file loads after the Tailwind utilities, so a
+   `padding` shorthand here would silently beat any py-* utility on the same
+   element. */
+.nl-wrap {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media (min-width: 640px) {
+  .nl-wrap {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+/* ── Type ────────────────────────────────────────────────────────────── */
+.nl-display {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.nl-d1 {
+  font-size: clamp(2.6rem, 7.4vw, 5.6rem);
+  line-height: 0.95;
+}
+.nl-d2 {
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  line-height: 1;
+}
+.nl-d3 {
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.nl-eyebrow {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.nl-eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  opacity: 0.65;
+}
+.nl-mono {
+  font-family: var(--mono);
+}
+.nl-lead {
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+.nl-btn {
+  height: 46px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.nl-btn:hover {
+  transform: translateY(-1px);
+}
+.nl-btn--amber {
+  background: var(--amber);
+  color: var(--ink);
+}
+.nl-btn--amber:hover {
+  background: #f09a4f;
+}
+.nl-btn--blue {
+  background: var(--blue);
+  color: var(--blue-ink);
+}
+.nl-btn--blue:hover {
+  background: #74afF3;
+}
+.nl-btn--ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+.nl-btn--ink:hover {
+  background: #2c2a26;
+}
+.nl-btn--ghost {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+.nl-btn--ghost:hover {
+  border-color: #cfc8b8;
+}
+.nl-btn--on-dark {
+  border: 1px solid rgba(246, 244, 239, 0.26);
+  color: var(--paper);
+}
+.nl-btn--on-dark:hover {
+  background: rgba(246, 244, 239, 0.1);
+}
+.nl-btn--sm {
+  height: 38px;
+  font-size: 14px;
+  padding: 0 14px;
+  border-radius: 999px;
+}
+.nl :focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+/* ── Surfaces ────────────────────────────────────────────────────────── */
+.nl-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+.nl-card--hover:hover {
+  border-color: #d7cfbd;
+  box-shadow: 0 14px 34px -22px rgba(27, 26, 23, 0.4);
+  transform: translateY(-2px);
+}
+.nl-card--dark {
+  background: var(--stage-2);
+  border: 1px solid rgba(246, 244, 239, 0.1);
+  border-radius: 16px;
+}
+.nl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.nl-chip--dark {
+  border-color: rgba(246, 244, 239, 0.16);
+  background: rgba(246, 244, 239, 0.05);
+  color: #d9d4c8;
+}
+.nl-chip__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+.nl-chip__dot--blue {
+  background: var(--blue);
+}
+
+/* Warm dotted field, the paper equivalent of a grid background. */
+.nl-dots {
+  background-image: radial-gradient(rgba(27, 26, 23, 0.11) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.nl-dots-dark {
+  background-image: radial-gradient(rgba(246, 244, 239, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ── Player mock (hero) ──────────────────────────────────────────────── */
+.nl-stage {
+  position: relative;
+  /* Everything drawn on the stage sits on dark, including headings, which take
+     their colour from here. */
+  color: var(--paper);
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--stage);
+  box-shadow: 0 30px 70px -40px rgba(27, 26, 23, 0.65);
+}
+.nl-stage--answering {
+  box-shadow:
+    inset 0 0 0 3px var(--blue),
+    0 30px 70px -40px rgba(27, 26, 23, 0.65);
+}
+.nl-scene {
+  position: absolute;
+  inset: 0;
+  padding: clamp(18px, 3.4vw, 42px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+.nl-scene[data-active='true'] {
+  opacity: 1;
+}
+/* On a phone the stage is only ~200px tall, so keep centred content clear of
+   the caption strip. */
+@media (max-width: 639px) {
+  .nl-scene {
+    padding-bottom: 40px;
+  }
+}
+.nl-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.nl-caption span {
+  max-width: 82%;
+  background: rgba(0, 0, 0, 0.62);
+  color: var(--paper);
+  font-size: clamp(11px, 1.15vw, 15px);
+  line-height: 1.4;
+  padding: 6px 13px;
+  border-radius: 8px;
+  text-align: center;
+}
+.nl-track {
+  position: relative;
+  flex-grow: 1;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--line);
+}
+.nl-track__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 3px;
+  background: var(--amber);
+  transition: width 0.4s linear;
+}
+.nl-track__fill--blue {
+  background: var(--blue);
+}
+/* The lesson creeps forward while it plays; an answer runs its own short bar. */
+.nl-track__fill--running {
+  animation: nl-progress 5.2s linear forwards;
+}
+@keyframes nl-progress {
+  from {
+    width: 18%;
+  }
+  to {
+    width: 26%;
+  }
+}
+.nl-track__fill--answer-running {
+  animation: nl-progress-answer 6s linear forwards;
+}
+@keyframes nl-progress-answer {
+  from {
+    width: 3%;
+  }
+  to {
+    width: 96%;
+  }
+}
+.nl-track__marker {
+  position: absolute;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  margin: -5.5px 0 0 -5.5px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 2px solid var(--paper);
+}
+.nl-round {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--ink);
+}
+.nl-sweep {
+  position: relative;
+  width: min(280px, 60%);
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(246, 244, 239, 0.12);
+  overflow: hidden;
+}
+.nl-sweep span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  border-radius: 2px;
+  background: var(--blue);
+  animation: nl-sweep 1.6s ease-in-out infinite;
+}
+@keyframes nl-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(260%);
+  }
+}
+.nl-mic-ring {
+  animation: nl-ring 1.8s ease-out infinite;
+}
+@keyframes nl-ring {
+  from {
+    box-shadow: 0 0 0 0 rgba(91, 159, 239, 0.5);
+  }
+  to {
+    box-shadow: 0 0 0 18px rgba(91, 159, 239, 0);
+  }
+}
+.nl-caret::after {
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 3px;
+  background: var(--blue);
+  vertical-align: -0.12em;
+  animation: nl-blink 1s steps(2, start) infinite;
+}
+@keyframes nl-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Progressive reveal of a bullet list, the way the text plugin does it. */
+.nl-reveal-line {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: nl-line-in 0.5s ease-out forwards;
+}
+@keyframes nl-line-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Accordion (FAQ) ─────────────────────────────────────────────────── */
+.nl-faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.nl-faq summary::-webkit-details-marker {
+  display: none;
+}
+.nl-faq summary .nl-faq__sign {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+}
+.nl-faq summary .nl-faq__sign::before,
+.nl-faq summary .nl-faq__sign::after {
+  content: '';
+  position: absolute;
+  background: var(--amber-dark);
+  transition: transform 0.25s ease;
+}
+.nl-faq summary .nl-faq__sign::before {
+  left: 0;
+  right: 0;
+  top: 9px;
+  height: 2px;
+}
+.nl-faq summary .nl-faq__sign::after {
+  top: 0;
+  bottom: 0;
+  left: 9px;
+  width: 2px;
+}
+.nl-faq[open] summary .nl-faq__sign::after {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nl-sweep span,
+  .nl-mic-ring,
+  .nl-caret::after,
+  .nl-reveal-line,
+  .nl-track__fill--running,
+  .nl-track__fill--answer-running {
+    animation: none !important;
+  }
+  .nl-reveal-line {
+    opacity: 1;
+    transform: none;
+  }
+  .nl-track__fill--running {
+    width: 26%;
+  }
+  .nl-track__fill--answer-running {
+    width: 60%;
+  }
+  .nl-btn:hover,
+  .nl-card--hover:hover {
+    transform: none;
+  }
+}

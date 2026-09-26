@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   modules: ['@nuxtjs/tailwindcss'],
 
-  css: ['~/assets/css/tailwind.css'],
+  css: ['~/assets/css/tailwind.css', '~/assets/css/product-theme.css'],
 
   // Static generation for GitHub Pages.
   // Deploying to a user/org page or a custom domain => baseURL stays '/'.
@@ -52,6 +52,11 @@ export default defineNuxtConfig({
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap'
+        },
+        // Learning-platform type stack
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap'
         }
       ]
     }
