@@ -8,7 +8,7 @@ useSeoMeta({
   robots: 'noindex, follow'
 })
 
-const lastUpdated = 'July 30, 2026'
+const lastUpdated = 'November 1, 2026'
 </script>
 
 <template>
@@ -102,7 +102,58 @@ const lastUpdated = 'July 30, 2026'
         <NuxtLink to="/privacy">Privacy Policy</NuxtLink>.
       </p>
 
-      <h2>7. Informational Content Only — No Professional Advice</h2>
+      <h2>7. In-App Purchases and Subscriptions</h2>
+      <p>
+        Some apps offer optional paid features, such as Paper Trading Premium
+        (no ads and extra in-app conveniences). These are sold as
+        subscriptions through Google Play.
+      </p>
+      <ul>
+        <li>
+          <strong>Billing.</strong> Payment is charged to your Google Play
+          account when you confirm the purchase. Prices are shown in the app
+          and on the Google Play purchase screen before you pay, and include
+          any applicable taxes collected by Google.
+        </li>
+        <li>
+          <strong>Automatic renewal.</strong> A subscription renews
+          automatically at the end of each billing period (for example,
+          monthly, every six months, or yearly) at the then-current price,
+          unless you cancel it before the renewal date. Google Play will
+          notify you before any price change takes effect.
+        </li>
+        <li>
+          <strong>Cancelling.</strong> You can cancel at any time in the
+          Google Play Store under Payments &amp; subscriptions → Subscriptions.
+          After you cancel, the paid features remain available until the end
+          of the period you have already paid for, and you will not be charged
+          again. Uninstalling the app does not cancel a subscription.
+        </li>
+        <li>
+          <strong>Refunds.</strong> Payments are processed by Google, and
+          refunds are handled under the Google Play refund policy. You can
+          request one through Google Play, or contact us and we will help
+          where we can. If a purchase is refunded, the paid features end.
+        </li>
+        <li>
+          <strong>Your account.</strong> A subscription is linked to the
+          account you are signed in with in the app (Google sign-in); guest
+          accounts cannot subscribe. If you change phones or reinstall, sign
+          in with the same account and use "Restore purchase" in the app.
+        </li>
+        <li>
+          <strong>Changes.</strong> We may change what a subscription
+          includes or its price for future billing periods. Changes do not
+          affect a period you have already paid for.
+        </li>
+      </ul>
+      <p>
+        Virtual funds, balances and trading results in our practice apps are
+        simulated, have no monetary value, and cannot be bought with,
+        exchanged for or withdrawn as real money.
+      </p>
+
+      <h2>8. Informational Content Only — No Professional Advice</h2>
       <p>
         Content available through the Services — including educational
         materials, practice questions, market or price information, results,
@@ -131,7 +182,7 @@ const lastUpdated = 'July 30, 2026'
         </li>
       </ul>
 
-      <h2>8. Availability and Changes to the Services</h2>
+      <h2>9. Availability and Changes to the Services</h2>
       <p>
         We may update, modify, suspend, or discontinue any part of the
         Services at any time, with or without notice. We do not guarantee that
@@ -139,7 +190,7 @@ const lastUpdated = 'July 30, 2026'
         available or uninterrupted.
       </p>
 
-      <h2>9. Disclaimer of Warranties</h2>
+      <h2>10. Disclaimer of Warranties</h2>
       <p>
         The Services are provided "as is" and "as available", without
         warranties of any kind, whether express or implied, including implied
@@ -149,7 +200,7 @@ const lastUpdated = 'July 30, 2026'
         components.
       </p>
 
-      <h2>10. Limitation of Liability</h2>
+      <h2>11. Limitation of Liability</h2>
       <p>
         To the maximum extent permitted by applicable law, Niyabh Labs and its
         owners, employees, and partners will not be liable for any indirect,
@@ -162,7 +213,7 @@ const lastUpdated = 'July 30, 2026'
         claim arose.
       </p>
 
-      <h2>11. Indemnification</h2>
+      <h2>12. Indemnification</h2>
       <p>
         You agree to indemnify and hold harmless Niyabh Labs from any claims,
         liabilities, damages, losses, and expenses (including reasonable legal
@@ -170,7 +221,7 @@ const lastUpdated = 'July 30, 2026'
         violation of these Terms.
       </p>
 
-      <h2>12. Termination</h2>
+      <h2>13. Termination</h2>
       <p>
         We may suspend or terminate your access to the Services at any time if
         you violate these Terms or if we discontinue the Services. You may
@@ -179,7 +230,7 @@ const lastUpdated = 'July 30, 2026'
         7, 9, 10, 11, and 13) will survive.
       </p>
 
-      <h2>13. Governing Law</h2>
+      <h2>14. Governing Law</h2>
       <p>
         These Terms are governed by the laws of India, without regard to
         conflict-of-law principles. Any disputes arising out of or relating to
@@ -187,7 +238,7 @@ const lastUpdated = 'July 30, 2026'
         jurisdiction of the courts located in Kerala, India.
       </p>
 
-      <h2>14. Changes to These Terms</h2>
+      <h2>15. Changes to These Terms</h2>
       <p>
         We may revise these Terms from time to time. When we do, we will
         update the "Last updated" date at the top of this page. Your continued
@@ -195,13 +246,13 @@ const lastUpdated = 'July 30, 2026'
         Terms.
       </p>
 
-      <h2>15. Severability</h2>
+      <h2>16. Severability</h2>
       <p>
         If any provision of these Terms is held to be unenforceable, the
         remaining provisions will remain in full force and effect.
       </p>
 
-      <h2>16. Contact Us</h2>
+      <h2>17. Contact Us</h2>
       <p>
         If you have questions about these Terms, contact us at
         <a :href="`mailto:${company.email}`">{{ company.email }}</a>.
