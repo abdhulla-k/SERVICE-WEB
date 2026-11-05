@@ -105,7 +105,8 @@ const lastUpdated = 'November 1, 2026'
       <h2>7. In-App Purchases and Subscriptions</h2>
       <p>
         Some apps offer optional paid features, such as Paper Trading Premium
-        (no ads and extra in-app conveniences). These are sold as
+        and Crypto Practice Premium (no ads and extra in-app conveniences).
+        These are sold as
         subscriptions through Google Play.
       </p>
       <ul>
