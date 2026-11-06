@@ -8,7 +8,7 @@ useSeoMeta({
   robots: 'noindex, follow'
 })
 
-const lastUpdated = 'November 1, 2026'
+const lastUpdated = 'November 6, 2026'
 </script>
 
 <template>
@@ -104,8 +104,9 @@ const lastUpdated = 'November 1, 2026'
 
       <h2>7. In-App Purchases and Subscriptions</h2>
       <p>
-        Some apps offer optional paid features, such as Paper Trading Premium
-        and Crypto Practice Premium (no ads and extra in-app conveniences).
+        Some apps offer optional paid features, such as Paper Trading Premium,
+        Crypto Practice Premium and Time management Premium (no ads and extra
+        in-app features).
         These are sold as
         subscriptions through Google Play.
       </p>
@@ -122,6 +123,13 @@ const lastUpdated = 'November 1, 2026'
           monthly, every six months, or yearly) at the then-current price,
           unless you cancel it before the renewal date. Google Play will
           notify you before any price change takes effect.
+        </li>
+        <li>
+          <strong>Free trials.</strong> Some subscriptions start with a free
+          trial (for example, 7 days) for accounts that have not had that
+          subscription before. You are not charged during the trial. Unless
+          you cancel before the trial ends, the subscription starts and the
+          first payment is charged automatically when it ends.
         </li>
         <li>
           <strong>Cancelling.</strong> You can cancel at any time in the

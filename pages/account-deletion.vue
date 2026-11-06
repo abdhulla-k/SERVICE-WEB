@@ -38,9 +38,9 @@ const apps = [
     data: 'your profile and the chit fund records you created in the app'
   },
   {
-    id: 'life-planner',
-    name: 'Life Planner',
-    pkg: '',
+    id: 'time-management',
+    name: 'Time management',
+    pkg: 'com.niyabhlabs.time_management',
     signIn: 'Google sign-in',
     place: 'the account / settings screen → Delete account',
     data: 'your profile and the tasks, plans, and content you created in the app'
